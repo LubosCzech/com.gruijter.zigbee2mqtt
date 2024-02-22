@@ -1,14 +1,14 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "com.gruijter.zigbee2mqtt",
-  "version": "2.1.3",
+  "id": "cz.lcz.zigbee2mqtt",
+  "version": "0.1.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Zigbee2MQTT"
+    "en": "LCZ Zigbee2MQTT"
   },
   "description": {
     "en": "Use Zigbee devices via MQTT"
@@ -22,7 +22,7 @@
       "MQTT"
     ]
   },
-  "brandColor": "#e8861e",
+  "brandColor": "#0330fc",
   "permissions": [],
   "images": {
     "small": "/assets/images/small.png",
@@ -310,6 +310,30 @@
       },
       {
         "title": {
+          "en": "The Angle changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=custom_number.angle"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "custom_number.angle",
+            "type": "number",
+            "title": {
+              "en": "angle"
+            },
+            "example": 1
+          }
+        ],
+        "id": "custom_number.angle_changed"
+      },
+      {
+        "title": {
           "en": "The X-angle changed"
         },
         "highlight": true,
@@ -379,6 +403,30 @@
           }
         ],
         "id": "custom_number.angle_z_changed"
+      },
+      {
+        "title": {
+          "en": "The Side changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=custom_number.side"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "custom_number.side",
+            "type": "number",
+            "title": {
+              "en": "side"
+            },
+            "example": 1
+          }
+        ],
+        "id": "custom_number.side_changed"
       },
       {
         "title": {

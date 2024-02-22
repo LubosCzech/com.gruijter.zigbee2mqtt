@@ -88,6 +88,8 @@ const capabilityMap = {
 	state: (val) => ['onoff', val === 'ON', { state: val ? 'ON' : 'OFF' }],
 	state_l1: (val) => ['onoff.l1', val === 'ON', { state_l1: val ? 'ON' : 'OFF' }],
 	state_l2: (val) => ['onoff.l2', val === 'ON', { state_l2: val ? 'ON' : 'OFF' }],
+	state_left: (val) => ['onoff.l1', val === 'ON', { state_left: val ? 'ON' : 'OFF' }],
+	state_right: (val) => ['onoff.l2', val === 'ON', { state_right: val ? 'ON' : 'OFF' }],
 	device_fault: (val) => ['alarm_generic.fault', val],
 	vibration: (val) => ['alarm_motion.vibration', val],
 	gas: (val) => ['alarm_generic.gas', val],
@@ -128,6 +130,8 @@ const capabilityMap = {
 	angle_x: (val) => ['custom_number.angle_x', Number(val)],
 	angle_y: (val) => ['custom_number.angle_y', Number(val)],
 	angle_z: (val) => ['custom_number.angle_z', Number(val)],
+	side: (val) => ['custom_number.side', Number(val)],
+	action_angle: (val) => ['custom_number.angle', Number(val)],
 
 	// Custom string capabilities
 	action: (val) => ['action', (val || '').toString()],
