@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The Angle changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=device|group&capabilities=custom_number.angle"
+		}
+	],
+	"tokens": [
+		{
+			"name": "custom_number.angle",
+			"type": "number",
+			"title": { 
+				"en": "angle"
+			},
+			"example": 1
+		}
+	]
+}

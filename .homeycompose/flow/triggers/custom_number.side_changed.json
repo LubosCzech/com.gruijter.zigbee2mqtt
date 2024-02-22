@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The Side changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=device|group&capabilities=custom_number.side"
+		}
+	],
+	"tokens": [
+		{
+			"name": "custom_number.side",
+			"type": "number",
+			"title": { 
+				"en": "side"
+			},
+			"example": 1
+		}
+	]
+}
