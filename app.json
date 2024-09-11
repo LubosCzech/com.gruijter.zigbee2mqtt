@@ -47,6 +47,12 @@
       },
       {
         "name": "Vitaliy Yakovchuk"
+      },
+      {
+        "name": "Niels Nijveldt"
+      },
+      {
+        "name": "Kringloper"
       }
     ]
   },
@@ -694,6 +700,34 @@
       },
       {
         "title": {
+          "en": "Center Turned Off"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.center"
+          }
+        ],
+        "id": "onoff.center_false"
+      },
+      {
+        "title": {
+          "en": "Center Turned On"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.center"
+          }
+        ],
+        "id": "onoff.center_true"
+      },
+      {
+        "title": {
           "en": "Turned Off"
         },
         "highlight": true,
@@ -747,6 +781,62 @@
           }
         ],
         "id": "onoff.l2_true"
+      },
+      {
+        "title": {
+          "en": "Left Turned Off"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.left"
+          }
+        ],
+        "id": "onoff.left_false"
+      },
+      {
+        "title": {
+          "en": "Left Turned On"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.left"
+          }
+        ],
+        "id": "onoff.left_true"
+      },
+      {
+        "title": {
+          "en": "Right Turned Off"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.right"
+          }
+        ],
+        "id": "onoff.right_false"
+      },
+      {
+        "title": {
+          "en": "Right Turned On"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.right"
+          }
+        ],
+        "id": "onoff.right_true"
       },
       {
         "title": {
@@ -870,6 +960,30 @@
       },
       {
         "title": {
+          "en": "The switch type Center changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=switch_type.center"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "switch_type.center",
+            "type": "string",
+            "title": {
+              "en": "Switch type center"
+            },
+            "example": "toggle"
+          }
+        ],
+        "id": "switch_type.center_changed"
+      },
+      {
+        "title": {
           "en": "The switch type L1 changed"
         },
         "highlight": true,
@@ -918,6 +1032,54 @@
       },
       {
         "title": {
+          "en": "The switch type Left changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=switch_type.left"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "switch_type.left",
+            "type": "string",
+            "title": {
+              "en": "Switch type left"
+            },
+            "example": "toggle"
+          }
+        ],
+        "id": "switch_type.left_changed"
+      },
+      {
+        "title": {
+          "en": "The switch type Right changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=switch_type.right"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "switch_type.right",
+            "type": "string",
+            "title": {
+              "en": "Switch type right"
+            },
+            "example": "toggle"
+          }
+        ],
+        "id": "switch_type.right_changed"
+      },
+      {
+        "title": {
           "en": "The preset changed"
         },
         "highlight": true,
@@ -939,6 +1101,30 @@
           }
         ],
         "id": "system_mode_changed"
+      },
+      {
+        "title": {
+          "en": "The valve state changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=valve_state"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "valve_state",
+            "type": "number",
+            "title": {
+              "en": "%"
+            },
+            "example": 53
+          }
+        ],
+        "id": "valve_state_changed"
       }
     ],
     "actions": [
@@ -1088,6 +1274,33 @@
       },
       {
         "title": {
+          "en": "Allow Joining On or Off"
+        },
+        "titleFormatted": {
+          "en": "Allow device joining [[val]]"
+        },
+        "hint": {
+          "en": "When On, the Zigbee2MQTT bridge will allow joining for 5 minutes."
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bridge"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "joinOnOff"
+      },
+      {
+        "title": {
           "en": "Switch Child Lock On or Off"
         },
         "titleFormatted": {
@@ -1109,6 +1322,30 @@
           }
         ],
         "id": "locked.child"
+      },
+      {
+        "title": {
+          "en": "Switch Center On or Off"
+        },
+        "titleFormatted": {
+          "en": "Switch Center [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.center"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "onoff.center"
       },
       {
         "title": {
@@ -1157,6 +1394,54 @@
           }
         ],
         "id": "onoff.l2"
+      },
+      {
+        "title": {
+          "en": "Switch Left On or Off"
+        },
+        "titleFormatted": {
+          "en": "Switch Left [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.left"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "onoff.left"
+      },
+      {
+        "title": {
+          "en": "Switch Right On or Off"
+        },
+        "titleFormatted": {
+          "en": "Switch Right [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.right"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "onoff.right"
       },
       {
         "title": {
@@ -1289,44 +1574,70 @@
       },
       {
         "title": {
-          "en": "Set Preset"
+          "en": "Restart Z2M"
         },
-        "titleFormatted": {
-          "en": "Set Preset to [[val]]"
+        "hint": {
+          "en": "Restart the Zigbee2MQTT bridge"
         },
         "highlight": true,
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=device|group&capabilities=preset"
+            "filter": "driver_id=bridge"
+          }
+        ],
+        "id": "restart"
+      },
+      {
+        "title": {
+          "en": "Set log level"
+        },
+        "titleFormatted": {
+          "en": "Set log level to [[val]]"
+        },
+        "hint": {
+          "en": "INFO or DEBUG level is required for the Msgs/minute counter."
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=bridge"
           },
           {
             "type": "dropdown",
             "name": "val",
             "values": [
               {
-                "id": "auto",
+                "id": "debug",
                 "title": {
-                  "en": "Automatic"
+                  "en": "Debug"
                 }
               },
               {
-                "id": "manual",
+                "id": "info",
                 "title": {
-                  "en": "Manual"
+                  "en": "Info"
                 }
               },
               {
-                "id": "holiday",
+                "id": "warn",
                 "title": {
-                  "en": "Holiday"
+                  "en": "Warn"
+                }
+              },
+              {
+                "id": "error",
+                "title": {
+                  "en": "Error"
                 }
               }
             ]
           }
         ],
-        "id": "preset copy"
+        "id": "setLogLevel"
       },
       {
         "title": {
@@ -1368,6 +1679,47 @@
           }
         ],
         "id": "switch_type"
+      },
+      {
+        "title": {
+          "en": "Set Switch Type Center"
+        },
+        "titleFormatted": {
+          "en": "Set Center Switch Type to [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=switch_type.center"
+          },
+          {
+            "type": "dropdown",
+            "name": "val",
+            "values": [
+              {
+                "id": "toggle",
+                "title": {
+                  "en": "toggle"
+                }
+              },
+              {
+                "id": "state",
+                "title": {
+                  "en": "State"
+                }
+              },
+              {
+                "id": "momentary",
+                "title": {
+                  "en": "Momentary"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "switch_type.center"
       },
       {
         "title": {
@@ -1450,6 +1802,116 @@
           }
         ],
         "id": "switch_type.l2"
+      },
+      {
+        "title": {
+          "en": "Set Switch Type Left"
+        },
+        "titleFormatted": {
+          "en": "Set Left Switch Type to [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=switch_type.left"
+          },
+          {
+            "type": "dropdown",
+            "name": "val",
+            "values": [
+              {
+                "id": "toggle",
+                "title": {
+                  "en": "toggle"
+                }
+              },
+              {
+                "id": "state",
+                "title": {
+                  "en": "State"
+                }
+              },
+              {
+                "id": "momentary",
+                "title": {
+                  "en": "Momentary"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "switch_type.left"
+      },
+      {
+        "title": {
+          "en": "Set Switch Type Right"
+        },
+        "titleFormatted": {
+          "en": "Set Right Switch Type to [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=switch_type.right"
+          },
+          {
+            "type": "dropdown",
+            "name": "val",
+            "values": [
+              {
+                "id": "toggle",
+                "title": {
+                  "en": "toggle"
+                }
+              },
+              {
+                "id": "state",
+                "title": {
+                  "en": "State"
+                }
+              },
+              {
+                "id": "momentary",
+                "title": {
+                  "en": "Momentary"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "switch_type.right"
+      },
+      {
+        "title": {
+          "en": "Set valve state"
+        },
+        "titleFormatted": {
+          "en": "Set valve state to [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=valve_state"
+          },
+          {
+            "name": "val",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.1,
+            "value": 0.5,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "valve_state"
       }
     ]
   },
@@ -1586,6 +2048,25 @@
                 "en": "Default is zigbee2mqtt"
               },
               "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Bridge settings"
+          },
+          "children": [
+            {
+              "id": "force_info_log_level",
+              "type": "checkbox",
+              "label": {
+                "en": "Force Info Logs"
+              },
+              "hint": {
+                "en": "Force the log level to INFO on (re)start. INFO or DEBUG level is required for the Msgs/minute counter."
+              },
+              "value": true
             }
           ]
         }
@@ -1734,6 +2215,12 @@
                   "id": "button",
                   "label": {
                     "en": "Button"
+                  }
+                },
+                {
+                  "id": "windowcoverings",
+                  "label": {
+                    "en": "Window Coverings"
                   }
                 }
               ]
@@ -1885,6 +2372,12 @@
                   "id": "button",
                   "label": {
                     "en": "Button"
+                  }
+                },
+                {
+                  "id": "windowcoverings",
+                  "label": {
+                    "en": "Window Coverings"
                   }
                 }
               ]
@@ -2380,6 +2873,31 @@
       "getable": true,
       "setable": true,
       "insights": false
+    },
+    "target_distance": {
+      "type": "number",
+      "title": {
+        "en": "Target distance"
+      },
+      "units": {
+        "en": "m"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "./assets/meter_mpm.svg"
+    },
+    "valve_state": {
+      "type": "number",
+      "title": {
+        "en": "Valve state"
+      },
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": true,
+      "insights": true
     }
   }
 }

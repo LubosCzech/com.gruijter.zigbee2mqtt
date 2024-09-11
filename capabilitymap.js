@@ -28,8 +28,8 @@ along with com.gruijter.zigbee2mqtt.  If not, see <http://www.gnu.org/licenses/>
 const capabilityMap = {
 	// Standard Homey Number capabilities
 	current_heating_setpoint: (val) => ['target_temperature', Number(val), { current_heating_setpoint: Number(val) }],
-	temperature: (val) => ['measure_temperature.sensor', Number(val)],
-	local_temperature: (val) => ['measure_temperature', Number(val)],
+	temperature: (val) => ['measure_temperature', Number(val)],
+	local_temperature: (val) => ['measure_temperature.local', Number(val)],
 	device_temperature: (val) => ['measure_temperature.device', Number(val)],
 	co: (val) => ['measure_co', Number(val)],
 	co2: (val) => ['measure_co2', Number(val)],
@@ -50,16 +50,18 @@ const capabilityMap = {
 	illuminance: (val) => ['measure_luminance', Number(val)],
 	illuminance_lux: (val) => ['measure_luminance.lux', Number(val)],
 	// : (val) => ['measure_ultraviolet', Number(val)],
-	// : (val) => ['measure_water', Number(val)],
+	water_flow: (val) => ['measure_water', Number(val)],
 	energy: (val) => ['meter_power', Number(val)],
 	water_consumed: (val) => ['meter_water', Number(val)],
 	// : (val) => ['meter_gas', Number(val)]
 	// : (val) => ['meter_rain', Number(val)]
 	// : (val) => ['volume_set.strength', Number(val)],
 	// : (val) => ['windowcoverings_tilt_set', Number(val)]
-	// : (val) => ['windowcoverings_set', Number(val)]
+	position: (val) => ['windowcoverings_set', Number(val) / 100, { position: Number(val) * 100 }],
 	// : (val) => ['speaker_duration', Number(val)]
 	// : (val) => ['speaker_position', Number(val)]
+	valve_state: (val) => ['valve_state', Number(val), { valve_state: Number(val) * 100 }],
+	target_distance: (val) => ['target_distance', Number(val)],
 
 	// color light related number capabilities
 	brightness: (val) => ['dim', Number(val) / 254, { brightness: Number(val) * 254 }],
@@ -88,8 +90,13 @@ const capabilityMap = {
 	state: (val) => ['onoff', val === 'ON', { state: val ? 'ON' : 'OFF' }],
 	state_l1: (val) => ['onoff.l1', val === 'ON', { state_l1: val ? 'ON' : 'OFF' }],
 	state_l2: (val) => ['onoff.l2', val === 'ON', { state_l2: val ? 'ON' : 'OFF' }],
-	state_left: (val) => ['onoff.l1', val === 'ON', { state_left: val ? 'ON' : 'OFF' }],
-	state_right: (val) => ['onoff.l2', val === 'ON', { state_right: val ? 'ON' : 'OFF' }],
+	state_left: (val) => ['onoff.left', val === 'ON', { state_left: val ? 'ON' : 'OFF' }],
+	state_center: (val) => ['onoff.center', val === 'ON', { state_center: val ? 'ON' : 'OFF' }],
+	state_right: (val) => ['onoff.right', val === 'ON', { state_right: val ? 'ON' : 'OFF' }],
+
+	// frost_protection: (val) => ['onoff.frost_protection', val === 'ON', { frost_protection: val ? 'ON' : 'OFF' }],
+	open_window: (val) => ['alarm_generic.open_window', val === 'ON'],
+
 	device_fault: (val) => ['alarm_generic.fault', val],
 	vibration: (val) => ['alarm_motion.vibration', val],
 	gas: (val) => ['alarm_generic.gas', val],
@@ -145,6 +152,9 @@ const capabilityMap = {
 	switch_type: (val) => ['switch_type', val, { switch_type: val }], // [toggle, state, momentary]
 	switch_type_l1: (val) => ['switch_type.l1', val, { switch_type_l1: val }], // [toggle, state, momentary]
 	switch_type_l2: (val) => ['switch_type.l2', val, { switch_type_l2: val }], // [toggle, state, momentary]
+	switch_type_left: (val) => ['switch_type.left', val, { switch_type_left: val }], // [toggle, state, momentary]
+	switch_type_center: (val) => ['switch_type.center', val, { switch_type_center: val }], // [toggle, state, momentary]
+	switch_type_right: (val) => ['switch_type.right', val, { switch_type_right: val }], // [toggle, state, momentary]
 
 	// useless ENUM capabilities
 	// system_mode: (val) => ['system_mode', val, { system_mode: val }],	// ["auto", "heat", "off", "cool", "emergency_heating", "precooling", "fan_only", "dry", "sleep" ]
@@ -172,6 +182,10 @@ const classIconMap = {
 	e27: ['light', 'light.svg'],
 	'led controller': ['light', 'light.svg'],
 	led: ['light', 'light.svg'],
+	fyrtur: ['windowcoverings', 'window_coverings.svg'],
+	kadrilj: ['windowcoverings', 'window_coverings.svg'],
+	praktlysing: ['windowcoverings', 'window_coverings.svg'],
+	tredansen: ['windowcoverings', 'window_coverings.svg'],
 };
 
 // map capabilities to Homey
@@ -188,7 +202,7 @@ const getExpMap = function mapExposure() {
 
 // map capabilities to Homey
 const mapProperty = function mapProperty(Z2MDevice) {
-	const homeyCapabilities = [];
+	let homeyCapabilities = [];
 	function pushUniqueCapabilities(capVal) {
 		if (!homeyCapabilities.includes(capVal)) {
 			homeyCapabilities.push(capVal);
@@ -196,6 +210,14 @@ const mapProperty = function mapProperty(Z2MDevice) {
 	}
 	const capDetails = {};
 	const mapExposure = (exp) => {
+
+		// if (exp.property.includes('open_window')) console.log(exp);
+
+		// create exception for blinds
+		if (exp.property === 'windowcoverings_set' || exp.property === 'position') {
+			homeyCapabilities = homeyCapabilities.filter((cap) => cap !== 'onoff');
+		}
+
 		// create exception for color lights
 		if (exp.property === 'color') {
 			pushUniqueCapabilities('light_hue');
