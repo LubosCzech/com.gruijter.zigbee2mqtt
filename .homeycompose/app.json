@@ -1,6 +1,6 @@
 {
   "id": "cz.lcz.zigbee2mqtt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [

@@ -1,4 +1,37 @@
 {
+  "2.4.7": {
+    "en": "Extended light effect options. Added flow card for setting light effect. Fixed MOES thermostat. Added Sensor setting for thermostats and presence detectors."
+  },
+  "2.4.6": {
+    "en": "Added support for Mode and Sensor setting of MOES BHT series thermostat."
+  },
+  "2.4.5": {
+    "en": "Fix dependencies again."
+  },
+  "2.4.4": {
+    "en": "Fix dependencies."
+  },
+  "2.4.3": {
+    "en": "Fix status bridge for legacy_availability_payload."
+  },
+  "2.4.2": {
+    "en": "Added joined groups capability for bridge."
+  },
+  "2.4.1": {
+    "en": "Added L3 and L4 switch support. Added backlight_mode support. Improved naming of switch flo cards."
+  },
+  "2.4.0": {
+    "en": "Added support for more ikea devices. Changed alarm_motion key so that it is presented as zone activity."
+  },
+  "2.3.4": {
+    "en": "Fixed device topic match."
+  },
+  "2.3.3": {
+    "en": "Added class icons for motion sensors and dimmers."
+  },
+  "2.3.2": {
+    "en": "Stability improvements."
+  },
   "2.3.1": {
     "en": "Added capability mapping for measure_water, valve_state and target_distance. Stability improvements."
   },

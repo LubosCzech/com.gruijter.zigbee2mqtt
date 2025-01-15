@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "cz.lcz.zigbee2mqtt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -700,6 +700,34 @@
       },
       {
         "title": {
+          "en": "Backlight turned Off"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.backlight"
+          }
+        ],
+        "id": "onoff.backlight_false"
+      },
+      {
+        "title": {
+          "en": "Backlight turned On"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.backlight"
+          }
+        ],
+        "id": "onoff.backlight_true"
+      },
+      {
+        "title": {
           "en": "Center Turned Off"
         },
         "highlight": true,
@@ -728,7 +756,7 @@
       },
       {
         "title": {
-          "en": "Turned Off"
+          "en": "L1 turned Off"
         },
         "highlight": true,
         "args": [
@@ -742,7 +770,7 @@
       },
       {
         "title": {
-          "en": "Turned On"
+          "en": "L1 turned On"
         },
         "highlight": true,
         "args": [
@@ -756,7 +784,7 @@
       },
       {
         "title": {
-          "en": "Turned Off"
+          "en": "L2 turned Off"
         },
         "highlight": true,
         "args": [
@@ -770,7 +798,7 @@
       },
       {
         "title": {
-          "en": "Turned On"
+          "en": "L2 turned On"
         },
         "highlight": true,
         "args": [
@@ -781,6 +809,62 @@
           }
         ],
         "id": "onoff.l2_true"
+      },
+      {
+        "title": {
+          "en": "L3 turned Off"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.l3"
+          }
+        ],
+        "id": "onoff.l3_false"
+      },
+      {
+        "title": {
+          "en": "L3 turned On"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.l3"
+          }
+        ],
+        "id": "onoff.l3_true"
+      },
+      {
+        "title": {
+          "en": "L4 turned Off"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.l4"
+          }
+        ],
+        "id": "onoff.l4_false"
+      },
+      {
+        "title": {
+          "en": "L4 turned On"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.l4"
+          }
+        ],
+        "id": "onoff.l4_true"
       },
       {
         "title": {
@@ -1227,6 +1311,77 @@
       },
       {
         "title": {
+          "en": "Set effect"
+        },
+        "titleFormatted": {
+          "en": "Set Color Power On Behavior to [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=color_power_on_behavior"
+          },
+          {
+            "type": "dropdown",
+            "name": "val",
+            "values": [
+              {
+                "id": "blink",
+                "title": {
+                  "en": "Blink"
+                }
+              },
+              {
+                "id": "breathe",
+                "title": {
+                  "en": "Breathe"
+                }
+              },
+              {
+                "id": "okay",
+                "title": {
+                  "en": "Okay"
+                }
+              },
+              {
+                "id": "channel_change",
+                "title": {
+                  "en": "Channel change"
+                }
+              },
+              {
+                "id": "finish_effect",
+                "title": {
+                  "en": "Finish effect"
+                }
+              },
+              {
+                "id": "stop_effect",
+                "title": {
+                  "en": "Stop effect"
+                }
+              },
+              {
+                "id": "colorloop",
+                "title": {
+                  "en": "Colorloop"
+                }
+              },
+              {
+                "id": "stop_colorloop",
+                "title": {
+                  "en": "Stop colorloop"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "effect"
+      },
+      {
+        "title": {
           "en": "Set Indicator Mode"
         },
         "titleFormatted": {
@@ -1325,6 +1480,30 @@
       },
       {
         "title": {
+          "en": "Switch backlight On or Off"
+        },
+        "titleFormatted": {
+          "en": "Backlight [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.backlight"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "onoff.backlight"
+      },
+      {
+        "title": {
           "en": "Switch Center On or Off"
         },
         "titleFormatted": {
@@ -1397,6 +1576,54 @@
       },
       {
         "title": {
+          "en": "Switch L3 On or Off"
+        },
+        "titleFormatted": {
+          "en": "Switch L3 [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.l3"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "onoff.l3"
+      },
+      {
+        "title": {
+          "en": "Switch L4 On or Off"
+        },
+        "titleFormatted": {
+          "en": "Switch L4 [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.l4"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "On"
+            }
+          }
+        ],
+        "id": "onoff.l4"
+      },
+      {
+        "title": {
           "en": "Switch Left On or Off"
         },
         "titleFormatted": {
@@ -1442,6 +1669,30 @@
           }
         ],
         "id": "onoff.right"
+      },
+      {
+        "title": {
+          "en": "Switch system mode Heat or Off"
+        },
+        "titleFormatted": {
+          "en": "Set system mode to heat [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=onoff.system_mode"
+          },
+          {
+            "type": "checkbox",
+            "name": "val",
+            "title": {
+              "en": "Heat"
+            }
+          }
+        ],
+        "id": "onoff.system_mode"
       },
       {
         "title": {
@@ -1588,6 +1839,125 @@
           }
         ],
         "id": "restart"
+      },
+      {
+        "title": {
+          "en": "Set Sensor"
+        },
+        "titleFormatted": {
+          "en": "Set Sensor to [[val]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=device|group&capabilities=sensor"
+          },
+          {
+            "type": "dropdown",
+            "name": "val",
+            "values": [
+              {
+                "id": "IN",
+                "title": {
+                  "en": "Internal (IN)"
+                }
+              },
+              {
+                "id": "OU",
+                "title": {
+                  "en": "External (OU)"
+                }
+              },
+              {
+                "id": "AL",
+                "title": {
+                  "en": "All (AL)"
+                }
+              },
+              {
+                "id": "internal",
+                "title": {
+                  "en": "Internal"
+                }
+              },
+              {
+                "id": "external",
+                "title": {
+                  "en": "External"
+                }
+              },
+              {
+                "id": "both",
+                "title": {
+                  "en": "Both"
+                }
+              },
+              {
+                "id": "air",
+                "title": {
+                  "en": "Air"
+                }
+              },
+              {
+                "id": "floor",
+                "title": {
+                  "en": "Floor"
+                }
+              },
+              {
+                "id": "supervisor_floor",
+                "title": {
+                  "en": "Supervisor_floor"
+                }
+              },
+              {
+                "id": "air_sensor",
+                "title": {
+                  "en": "Air_sensor"
+                }
+              },
+              {
+                "id": "floor_sensor",
+                "title": {
+                  "en": "Floor_sensor"
+                }
+              },
+              {
+                "id": "max_guard",
+                "title": {
+                  "en": "Max_guard"
+                }
+              },
+              {
+                "id": "on",
+                "title": {
+                  "en": "On"
+                }
+              },
+              {
+                "id": "off",
+                "title": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "occupied",
+                "title": {
+                  "en": "Occupied"
+                }
+              },
+              {
+                "id": "unuccupied",
+                "title": {
+                  "en": "Unoccupied"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "sensor"
       },
       {
         "title": {
@@ -2538,7 +2908,7 @@
     "effect": {
       "type": "enum",
       "title": {
-        "en": "SELECTION"
+        "en": "Effect"
       },
       "values": [
         {
@@ -2575,6 +2945,18 @@
           "id": "stop_effect",
           "title": {
             "en": "Stop effect"
+          }
+        },
+        {
+          "id": "colorloop",
+          "title": {
+            "en": "Colorloop"
+          }
+        },
+        {
+          "id": "stop_colorloop",
+          "title": {
+            "en": "Stop colorloop"
           }
         }
       ],
@@ -2636,6 +3018,16 @@
       "type": "number",
       "title": {
         "en": "Joined devices"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "./assets/meter_joined_devices.svg"
+    },
+    "meter_joined_groups": {
+      "type": "number",
+      "title": {
+        "en": "Joined groups"
       },
       "getable": true,
       "setable": false,
@@ -2770,6 +3162,114 @@
           "id": "high",
           "title": {
             "en": "High"
+          }
+        }
+      ],
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "sensor": {
+      "type": "enum",
+      "title": {
+        "en": "Sensor"
+      },
+      "values": [
+        {
+          "id": "IN",
+          "title": {
+            "en": "Internal (IN)"
+          }
+        },
+        {
+          "id": "OU",
+          "title": {
+            "en": "External (OU)"
+          }
+        },
+        {
+          "id": "AL",
+          "title": {
+            "en": "All (AL)"
+          }
+        },
+        {
+          "id": "internal",
+          "title": {
+            "en": "Internal"
+          }
+        },
+        {
+          "id": "external",
+          "title": {
+            "en": "External"
+          }
+        },
+        {
+          "id": "both",
+          "title": {
+            "en": "Both"
+          }
+        },
+        {
+          "id": "air",
+          "title": {
+            "en": "Air"
+          }
+        },
+        {
+          "id": "floor",
+          "title": {
+            "en": "Floor"
+          }
+        },
+        {
+          "id": "supervisor_floor",
+          "title": {
+            "en": "Supervisor_floor"
+          }
+        },
+        {
+          "id": "air_sensor",
+          "title": {
+            "en": "Air_sensor"
+          }
+        },
+        {
+          "id": "floor_sensor",
+          "title": {
+            "en": "Floor_sensor"
+          }
+        },
+        {
+          "id": "max_guard",
+          "title": {
+            "en": "Max_guard"
+          }
+        },
+        {
+          "id": "on",
+          "title": {
+            "en": "On"
+          }
+        },
+        {
+          "id": "off",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "occupied",
+          "title": {
+            "en": "Occupied"
+          }
+        },
+        {
+          "id": "unuccupied",
+          "title": {
+            "en": "Unoccupied"
           }
         }
       ],

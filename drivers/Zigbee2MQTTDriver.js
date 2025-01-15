@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 /*
-Copyright 2023, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of com.gruijter.zigbee2mqtt.
 
@@ -25,14 +25,15 @@ const { capabilityMap } = require('../capabilitymap');
 
 module.exports = class Zigbee2MQTTDriver extends Driver {
 
-	async onInit() {
-		this.ds = {
-			capabilityMap,
-		};
-		this.log('Device driver has been initialized');
-	}
+  async onInit() {
+    this.ds = {
+      capabilityMap,
+    };
+    this.log('Device driver has been initialized');
+  }
 
-	async onUninit() {
-		this.log('driver onUninit');
-	}
+  async onUninit() {
+    this.log('driver onUninit');
+  }
+
 };
